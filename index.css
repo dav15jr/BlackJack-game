@@ -26,3 +26,8 @@ button {
     margin: 2px;
     
 }
+
+#btn-el {                       /* added to change button color when game is over */
+    color: #016f32;
+    background: goldenrod;
+}

@@ -1,6 +1,6 @@
 let player = {
     name: "Davis",
-    chips: 169
+    chips: 369
 }
 
 let cards = []
@@ -12,8 +12,9 @@ let messageEl = document.getElementById("message-el")
 let sumEl = document.getElementById("sum-el")
 let cardsEl = document.getElementById("cards-el")
 let playerEl = document.getElementById("player-el")
+let buttonEl = document.getElementById("btn-el")
 
-playerEl.textContent = player.name + ": £" + player.chips
+playerEl.textContent = player.name + ": $" + player.chips
 
 function getRandomCard() {
     let randomNumber = Math.floor( Math.random()*13 ) + 1
@@ -22,7 +23,7 @@ function getRandomCard() {
     } else if (randomNumber === 1) {
         return 11
     } else {
-        return randomNumber
+        return randomNumber    
     }
 }
 
@@ -32,6 +33,9 @@ function startGame() {
     let secondCard = getRandomCard()
     cards = [firstCard, secondCard]
     sum = firstCard + secondCard
+    buttonEl.textContent = "NEW CARD";      //Added to reset button text, color & background
+    buttonEl.style.color = "#016f32"
+    buttonEl.style.background = "goldenrod"
     renderGame()
 }
 
@@ -47,12 +51,19 @@ function renderGame() {
     } else if (sum === 21) {
         message = "You've got Blackjack!"
         hasBlackJack = true
+        buttonEl.textContent = "You Won!";   //Added to change button text, color & background
+        buttonEl.style.color = "purple"
+        buttonEl.style.background = "white"
+
     } else {
         message = "You're out of the game!"
         isAlive = false
         cards = []
         sum = 0
-        
+        buttonEl.textContent = "Game over!";   //Added to change button text, color & background
+        buttonEl.style.color = "black"
+        buttonEl.style.background = "grey"
+
     }
     messageEl.textContent = message
 }
